@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Name": "Produit 1",
+    "Price": 19.99,
+    "Description": "Description du produit 1",
+    "IsPromotion": false
+  },
+  {
+    "Id": 2,
+    "Name": "Produit 2",
+    "Price": 29.99,
+    "Description": "Description du produit 2",
+    "IsPromotion": true
+  },
+  {
+    "Id": 3,
+    "Name": "Nouveau produit",
+    "Price": 29.99,
+    "Description": "Description du nouveau produit",
+    "IsPromotion": true
+  }
+]
