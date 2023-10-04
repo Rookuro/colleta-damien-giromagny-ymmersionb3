@@ -12,10 +12,12 @@ function ProductForm() {
     descriptionV2: '',
     price: 0,
     isPromotion: false,
-    urlImage: '',
+    urlImage: [],
     urlProduct: '',
     tagProduct: 0
   });
+  const [selectedImageNames, setSelectedImageNames] = useState([]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -26,68 +28,131 @@ function ProductForm() {
     });
   };
 
+  function handleFileChange(event) {
+    const selectedFiles = Array.from(event.target.files);
+  
+    // Stockez les noms des images sélectionnées
+    const imageNames = selectedFiles.map((file) => file.name);
+  
+    // Ajoutez les fichiers et noms au tableau formData.images
+    setFormData({
+      ...formData,
+      images: [...formData.images, ...selectedFiles],
+      urlImage: [...formData.urlImage, ...imageNames]
+    });
+  
+    const previews = formData.images.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+  
+    setSelectedImageNames(formData.urlImage);
+  }
+  
+  
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Assurez-vous que formData.urlImage est un tableau
+    const urlImage = Array.isArray(formData.urlImage) ? formData.urlImage.join(',') : '';
+    // const urlImage = selectedImageNames.join(',');
+  
+    const dataToSend = {
+      ...formData,
+      urlImage,
+    };
+  
     try {
-      const response = await axios.post('http://localhost:5046/api/products', formData);
+      const response = await axios.post('http://localhost:5046/api/products', dataToSend);
       console.log('Produit ajouté avec succès :', response.data);
     } catch (error) {
       console.error('Erreur lors de l\'ajout du produit :', error);
     }
   };
+  
 
-  // const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
-  // function handleFileChange(event) {
-  //   const selectedFiles = Array.from(event.target.files);
-  //   setFiles(selectedFiles);
-  // }
+  function handleFileChange(event) {
+    const selectedFiles = Array.from(event.target.files);
+    const newFiles = selectedFiles.concat(files);
+    setFiles(newFiles);
 
-  // function onSubmit(event) {
-  //   event.preventDefault();
+    const previews = newFiles.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+  }
 
-  //   if (files.length === 0) {
-  //     alert("Veuillez sélectionner des fichiers");
-  //     return;
-  //   }
+  async function onSubmit(event) {
+    event.preventDefault();
 
-  //   const body = new FormData();
+    if (files.length === 0) {
+      alert("Veuillez sélectionner des fichiers");
+      return;
+    }
 
-  //   for (let index = 0; index < files.length; index++) {
-  //     const element = files[index];
-  //     body.append('file', element);
-  //   }
+    const formData = new FormData();
 
-  //   fetch("/api/upload", {
-  //     method: "POST",
-  //     body
-  //   });
-  // }
+    for (let index = 0; index < files.length; index++) {
+      const element = files[index];
+      formData.append('images', element);
+    }
+
+    try {
+      const response = await axios.post("/api/upload", formData);
+
+      console.log("API Response:", response.data);
+
+      setUploadedImages(response.data.images);
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+  }
+
+  const downloadImage = (imageUrl) => {
+    window.open(imageUrl, "_blank");
+  };
 
   return (
     <>
       <div>
-        <h1>
+        <h1 className={styles.title}>
           Ajouter un nouveau produit
         </h1>
         <div className={styles.form_block}>
-          <form className={styles.form} onSubmit={handleSubmit}  encType="multipart/form-data">
+          <form className={styles.form} onSubmit={(e) => { handleSubmit(e); onSubmit(e); }}  encType="multipart/form-data">
             <div className={styles.high_main_block}>
               <div className={styles.first_left_block}>
-              {/* <div>
-                  <input type="file" multiple onChange={handleFileChange} />
-                {files.length > 0 && (
-                  <div>
-                    <p value={formData.urlImage = files.map(file => file.name).join(", ") } onChange={handleFileChange}>Fichiers sélectionnés : {files.map(file => file.name).join(", ")}</p>
-                    <ul>
-                      {files.map((file, index) => (
-                        <li key={index}>{file.name}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div> */}
+              <div>
+              <input type="file" multiple onChange={handleFileChange} />
+              {imagePreviews.length > 0 && (
+                <div>
+                  <p>Fichiers sélectionnés :</p>
+                  <ul>
+                    {imagePreviews.map((preview, index) => (
+                      <li key={index}>
+                        <img src={preview} alt={`Preview ${index}`} width="100" />
+                        <p>{formData.urlImage[index]}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {uploadedImages && uploadedImages.length > 0 && (
+                <div>
+                  <p>Images téléchargées :</p>
+                  <ul>
+                    {uploadedImages.map((imageUrl, index) => (
+                      <li key={index}>
+                        <button onClick={() => downloadImage(imageUrl)}>Télécharger</button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+            </div>
               </div>
               <div className={styles.first_right_block}>
                 <div className={styles.high_right_block}>

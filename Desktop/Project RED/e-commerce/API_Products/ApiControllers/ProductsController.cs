@@ -16,7 +16,7 @@ public class Product
     public string Description { get; set; }
     public string DescriptionV2 { get; set; }
     public bool IsPromotion { get; set; }
-    public string UrlImage { get; set; }
+    public List<string> UrlImage { get; set; }
     public string UrlProduct { get; set; }
     public tag TagProduct { get; set; }
 }
@@ -47,9 +47,9 @@ public class ProductsController : ControllerBase
         }
         return Ok(product);
     }
-
     [HttpPost]
-    public ActionResult<Product> Post([FromBody] Product product) {
+    public ActionResult<Product> Post([FromBody] Product product)
+    {
         product.Id = GenerateProductId();
         _products.Add(product);
         SaveProductsToJson();

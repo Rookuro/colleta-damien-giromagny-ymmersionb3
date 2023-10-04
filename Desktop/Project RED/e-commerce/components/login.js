@@ -56,7 +56,7 @@ export default function AuthComponent() {
         </div>
       ) : (
         <div className={styles.button} onClick={signIn}>
-          <Image src={Connexion} width={40} height={40} />
+          <Image src={Connexion}/>
           <div className={styles.text} onClick={signIn}>
             <p className="">Se connecter</p>
           </div>

@@ -9,7 +9,12 @@ export const config = {
     bodyParser: false,
   },
 };
-
+function generateUniqueFileName(originalFileName: string): string {
+  const uniquePrefix = Date.now().toString(36);
+  const fileExtension = path.extname(originalFileName);
+  const uniqueFileName = `${uniquePrefix}${fileExtension}`;
+  return uniqueFileName;
+}
 export default function uploadFormFiles(
   req: Request,
   res: Response
@@ -22,24 +27,31 @@ export default function uploadFormFiles(
     });
 
     form
-      .on("file", (name: string, file: File) => {
-        console.log("Source Path:", file.path);
-        const sourcePath = file.path;
-        const destinationPath = path.join(form.uploadDir, file.name);
-
-          const readStream = fs.createReadStream(sourcePath);
-          const writeStream = fs.createWriteStream(destinationPath);
-
-          readStream.pipe(writeStream);
-
-          fs.unlinkSync(sourcePath);
-    })
-      .on("aborted", () => {
-        reject(res.status(500).send('Aborted'));
-      })
-      .on("end", () => {
-        resolve(res.status(200).send('done'));
+    .on("file", (name: string, file: File) => {
+      console.log("Source Path:", file.path);
+      const sourcePath = file.path;
+  
+      // Générez un nom de fichier unique
+      const uniqueFileName = generateUniqueFileName(file.name);
+      const destinationPath = path.join(form.uploadDir, uniqueFileName);
+  
+      const readStream = fs.createReadStream(sourcePath);
+      const writeStream = fs.createWriteStream(destinationPath);
+  
+      readStream.pipe(writeStream);
+  
+      readStream.on("end", () => {
+        // Supprimez le fichier source après la copie
+        fs.unlinkSync(sourcePath);
       });
+    })
+    .on("aborted", () => {
+      reject(res.status(500).send('Aborted'));
+    })
+    .on("end", () => {
+      resolve(res.status(200).send('done'));
+    });
+  
 
     await form.parse(req);
   });

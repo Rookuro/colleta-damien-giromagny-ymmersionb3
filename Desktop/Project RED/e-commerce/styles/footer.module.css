@@ -1,14 +1,11 @@
 
 .footer
 {
-    position: sticky;
-    bottom: 0;  
-    width: 100%;
-    padding-top: 1%;
     display: flex;
     justify-content: space-evenly;
     background-color: #FFA800;
 }
+
 
 .footer_block_logo 
 {
