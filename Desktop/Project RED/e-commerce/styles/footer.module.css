@@ -1,0 +1,74 @@
+
+.footer
+{
+    margin-top: auto;
+    bottom: 0;
+    width: 100%;
+    padding-top: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #FFA800;
+}
+
+.footer_block_logo 
+{
+    display: flex;
+}
+
+.footer_block1
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_block2
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_block3
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_block_name3
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.americanexpress_img img
+{
+    width: 40px;
+}
+
+.mastercard_img img
+{
+    width: 40px;
+    margin-left: 10%;;
+}
+
+.creditcard_img img
+{
+    width: 40px;  
+    margin-left: 25%;
+}
+
+.paypal_img img
+{
+    width: 40px;
+    margin-left: 55%;
+}
+
+.block_img
+ {
+    display: flex;
+}
+
+.logo_computer 
+{
+    width: 200px;
+}
+

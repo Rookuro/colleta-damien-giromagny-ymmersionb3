@@ -4,27 +4,219 @@
     "Name": "Produit 1",
     "Price": 19.99,
     "Description": "Description du produit 1",
-    "IsPromotion": false
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
   },
   {
     "Id": 2,
-    "Name": "Produit 2",
-    "Price": 29.99,
-    "Description": "Description du produit 2",
-    "IsPromotion": true
+    "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G",
+    "Price": 1099.99,
+    "Description": "Basée sur l'architecture NVIDIA Ada Lovelace, la \r\n    carte graphique Gigabyte AORUS GeForce RTX \r\n    4060 ELITE 8G s'appuie sur la technologie DLSS 3 \r\n    et le ray tracing matériel pour sublimer les jeux les \r\n    plus récents et vous permettre de vivre une expérience \r\n    vidéoludique immersive et réaliste.",
+    "DescriptionV2": "8 Go GDDR6 - Dual HDMI/Dual DisplayPort - DLSS 3 - PCI Express (NVIDIA GeForce RTX 4060)",
+    "IsPromotion": true,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
   },
   {
     "Id": 3,
     "Name": "Nouveau produit",
     "Price": 29.99,
     "Description": "Description du nouveau produit",
-    "IsPromotion": true
+    "DescriptionV2": null,
+    "IsPromotion": true,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
   },
   {
     "Id": 4,
     "Name": "eeez",
     "Price": 15.0,
     "Description": "ezeez",
-    "IsPromotion": false
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 5,
+    "Name": "gtx",
+    "Price": 1000.0,
+    "Description": "13Go",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 6,
+    "Name": "zery",
+    "Price": 15.0,
+    "Description": "zetryui",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 7,
+    "Name": "zery",
+    "Price": 15.0,
+    "Description": "zetryui",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 8,
+    "Name": "errerere",
+    "Price": 15.0,
+    "Description": "ezezez",
+    "DescriptionV2": null,
+    "IsPromotion": true,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 9,
+    "Name": "rttrtr",
+    "Price": 15.0,
+    "Description": "hello carousel",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": null,
+    "TagProduct": 0
+  },
+  {
+    "Id": 10,
+    "Name": "ezzerz",
+    "Price": 0.0,
+    "Description": "\"z\"z\"",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "\"\"zz\"z\"\"z",
+    "TagProduct": 0
+  },
+  {
+    "Id": 19,
+    "Name": "Je test un truc",
+    "Price": 15.0,
+    "Description": "je test un petit truc vite fait",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "",
+    "TagProduct": 1
+  },
+  {
+    "Id": 20,
+    "Name": "",
+    "Price": 0.0,
+    "Description": "",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "",
+    "TagProduct": 1
+  },
+  {
+    "Id": 21,
+    "Name": "azfazf",
+    "Price": 9464564.0,
+    "Description": "azfazfazfazf",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "",
+    "TagProduct": 1
+  },
+  {
+    "Id": 22,
+    "Name": "",
+    "Price": 0.0,
+    "Description": "",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "",
+    "TagProduct": 1
+  },
+  {
+    "Id": 23,
+    "Name": "reerre",
+    "Price": 15.0,
+    "Description": "tghytyttyyt",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "sfdghjk",
+    "TagProduct": 1
+  },
+  {
+    "Id": 24,
+    "Name": "erfdre",
+    "Price": 15.0,
+    "Description": "rrrereerer",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "rrerre",
+    "TagProduct": 1
+  },
+  {
+    "Id": 25,
+    "Name": "vg",
+    "Price": 0.0,
+    "Description": "popo",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "upload_6a2837ce0370c76f0b1700855442a203.png",
+    "UrlProduct": "o",
+    "TagProduct": 1
+  },
+  {
+    "Id": 26,
+    "Name": "zerty",
+    "Price": 15.0,
+    "Description": "trrrttr",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "dofus-2023-04-27_22-56-32-Crakin.png",
+    "UrlProduct": "eezezez",
+    "TagProduct": 1
+  },
+  {
+    "Id": 27,
+    "Name": "zertryu",
+    "Price": 15.0,
+    "Description": "tgfgffgtrtr",
+    "DescriptionV2": null,
+    "IsPromotion": false,
+    "UrlImage": "dofus-2023-04-20_09-24-48-Feurkin.png",
+    "UrlProduct": "yyyuuyuy",
+    "TagProduct": 1
+  },
+  {
+    "Id": 28,
+    "Name": "Valentin",
+    "Price": 1.0,
+    "Description": "zeeeeeeeeeeeeeeeeeeeeeee",
+    "DescriptionV2": "zeezezezezezezez",
+    "IsPromotion": false,
+    "UrlImage": "",
+    "UrlProduct": "",
+    "TagProduct": 1
   }
 ]

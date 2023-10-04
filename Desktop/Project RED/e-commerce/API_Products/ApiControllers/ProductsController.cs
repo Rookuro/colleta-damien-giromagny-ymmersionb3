@@ -4,13 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+public enum tag {
+    processor,
+    motherboard,
+}
 public class Product
 {
     public int Id { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
     public string Description { get; set; }
+    public string DescriptionV2 { get; set; }
     public bool IsPromotion { get; set; }
+    public string[] UrlImage { get; set; }
+    public string UrlProduct { get; set; }
+    public tag TagProduct { get; set; }
 }
 
 
@@ -59,7 +67,11 @@ public class ProductsController : ControllerBase
         existingProduct.Name = updatedProduct.Name;
         existingProduct.Price = updatedProduct.Price;
         existingProduct.Description = updatedProduct.Description;
+        existingProduct.DescriptionV2 = updatedProduct.DescriptionV2;
         existingProduct.IsPromotion = updatedProduct.IsPromotion;
+        existingProduct.UrlImage = updatedProduct.UrlImage;
+        existingProduct.UrlProduct = updatedProduct.UrlProduct;
+        existingProduct.TagProduct = updatedProduct.TagProduct;
 
         SaveProductsToJson();
         return NoContent();

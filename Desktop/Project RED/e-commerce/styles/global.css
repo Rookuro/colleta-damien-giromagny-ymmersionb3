@@ -1,5 +1,7 @@
 html,
 body {
+  position: relative;
+  background-color: #EAEAEA;
   padding: 0;
   margin: 0;
   font-family:
@@ -17,6 +19,10 @@ body {
     sans-serif;
 }
 
+header{
+  background-color: #FFA800;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -29,4 +35,9 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+footer{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }

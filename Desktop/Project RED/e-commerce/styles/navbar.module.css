@@ -1,0 +1,101 @@
+.navbarItems 
+{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    box-shadow: 0.5px 1px 3px black;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: -35px;
+}
+
+.logo_block img 
+{
+    width: 300px;
+}
+
+.searchbar_block img 
+{
+    width: 25px;
+}
+
+.searchbar_block input
+{
+    vertical-align: middle;
+}
+
+.cart_block img 
+{
+    width: 40px;
+}
+
+.button_style
+{
+    width: 3rem;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.searchbar_block input
+{
+    padding: 5px;
+    margin-bottom: 3%;
+    background: none;
+    padding-left: 7%;
+    padding-top: 4%;
+    border: none;
+}
+
+.searchbar_block form
+{
+    background-color: white;
+    border-radius: 5rem;
+    height: 2rem;
+    box-shadow: 1px 2px 3px black;
+    display: flex;
+    flex-direction: row;
+    /* width: 25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
+.searchbar_block input[type=text]
+{
+    font-size: 18px;
+}
+.searchbar_block input:focus
+{
+    border: none;
+    outline: none;
+}
+
+.block_navbar{
+    position: relative;
+    top: 0.4rem;
+    background-color: none;
+}
+
+.block_navbar ul
+{
+    display: flex;
+    justify-content: center;
+}
+
+.block_navbar ul li
+{
+    list-style: none;
+    margin-left: 2px;
+}
+
+.block_navbar a
+{
+    margin-top: 10%;
+    background-color: white;
+    padding: 5px 70px 5px 70px;
+    box-shadow: 0.5px 1px 3px black;
+}
+
+.block_navbar_welcome{
+
+}

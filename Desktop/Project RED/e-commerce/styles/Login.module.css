@@ -1,0 +1,22 @@
+.button{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.text{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.connected{
+ display: flex;
+ flex-direction: column;
+}
+.connected button{
+    cursor: pointer;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.connected img{
+    border-radius: 50%;
+}
