@@ -90,8 +90,13 @@
     border-radius: 10px;
     border: solid 1px;
     font-size: large;
+    padding: 10px;
 }
 
 .first_low_block > .input_box{
-    padding: 1%;
+    padding: 10px;
+}
+
+.name_block, .price_block{
+    width: 100%;
 }

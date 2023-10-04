@@ -9,7 +9,9 @@ function MyApp({ Component, pageProps }) {
         <Navbar />
       </header>
       <Component {...pageProps} />
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

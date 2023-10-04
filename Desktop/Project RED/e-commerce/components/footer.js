@@ -11,7 +11,6 @@ export default class Footer extends Component{
     render(){
         return(
             <>
-            <footer>
                 <div className={styles.footer}>
                     <div className={styles.footer_block1}>
                         <a href='#'>
@@ -75,7 +74,6 @@ export default class Footer extends Component{
                         </div>
                     </div>
                 </div>
-            </footer>
             </>
         )
     }

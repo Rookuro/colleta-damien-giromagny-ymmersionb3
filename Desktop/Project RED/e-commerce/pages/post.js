@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/post.module.css';
+import Chainlink from './/../public/lien.png';
 // import FileUploader from './FileUploader';
 // import { writeFile } from "fs/promises";
 
@@ -148,6 +149,7 @@ function ProductForm() {
               <div className={styles.second_low_block}>
                 <label className={styles.label}>
                   URL Stripe
+
                   <textarea
                     className={styles.input_box}
                     name="urlProduct"
@@ -162,9 +164,7 @@ function ProductForm() {
               </div>
           </form>
         </div>
-      </div>
-
-      
+      </div> 
     </>
   );
 }
