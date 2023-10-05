@@ -15,7 +15,7 @@ const ProductDisplay = () => {
                         <div key={product.id} className={styles.productSize}>
                             <Link href={`/ProductDetail?id=${product.id}`}>
                                 <Image
-                                    src={`/uploads/${product.urlImage}`}
+                                    src={product.urlImage && product.urlImage.length > 0 ? `/uploads/${product.urlImage[0]}` : '/path/par/default.jpg'}
                                     alt="sample image"
                                     width={600}
                                     height={400}

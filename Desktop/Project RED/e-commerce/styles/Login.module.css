@@ -5,6 +5,10 @@
     text-align: center;
     align-items: center;
 }
+.button img{
+    margin-right: 0.5rem;
+    width: 3rem;
+}
 
 .text{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

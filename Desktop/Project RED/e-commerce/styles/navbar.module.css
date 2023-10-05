@@ -73,7 +73,7 @@
 .block_navbar{
     position: relative;
     top: 0.4rem;
-    background-color: none;
+    background-color: #EAEAEA;
 }
 
 .block_navbar ul
@@ -90,12 +90,42 @@
 
 .block_navbar a
 {
-    margin-top: 10%;
+    margin-top: px;
     background-color: white;
     padding: 5px 70px 5px 70px;
     box-shadow: 0.5px 1px 3px black;
 }
 
-.block_navbar_welcome{
+.block_navbar_button:hover{
+    background-color: #FFA800;
+    color: #fff;
+    transition: all 0.2s;
+    cursor: pointer;
+}
 
+/* Dropdown navbar*/
+
+.dropdown_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    display: none;
+}
+
+.dropdown_content a {
+    box-shadow: none;
+    float: left;
+}
+
+.dropdown:hover .dropdown_content{
+    display: block;
+    display: flex;
+}
+.circle{
+    background-color: #fff;
+    border-radius: 5rem;
+    text-align: center;
+    width: 1.5rem;
+    position: absolute;
+    top: 3rem;
 }

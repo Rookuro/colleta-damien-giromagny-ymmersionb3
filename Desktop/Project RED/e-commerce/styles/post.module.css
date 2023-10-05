@@ -5,7 +5,19 @@
 .form{
     width: 100%;
 }
-
+.preview{
+    width: 25rem;
+    flex-wrap: wrap;
+}
+.preview img{
+    width: 10rem;
+}
+.preview ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .high_main_block{
     display: flex;
     width: 100%;
@@ -81,7 +93,7 @@
     padding: 5%;
     border-radius: 50px;
     color: #fff;
-    border-color: #fff;
+    border: none;
     background-color: #FFA800;
 }
 .add_button:hover{

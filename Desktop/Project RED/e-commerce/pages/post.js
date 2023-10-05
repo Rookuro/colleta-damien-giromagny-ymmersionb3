@@ -2,8 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/post.module.css';
 import Chainlink from './/../public/lien.png';
-// import FileUploader from './FileUploader';
-// import { writeFile } from "fs/promises";
 
 function ProductForm() {
   const [formData, setFormData] = useState({
@@ -14,10 +12,11 @@ function ProductForm() {
     isPromotion: false,
     urlImage: [],
     urlProduct: '',
-    tagProduct: 0
+    tagProduct: 0,
+    images: [],
+    quantity: 1
   });
   const [selectedImageNames, setSelectedImageNames] = useState([]);
-
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,67 +29,53 @@ function ProductForm() {
 
   function handleFileChange(event) {
     const selectedFiles = Array.from(event.target.files);
-  
-    // Stockez les noms des images sélectionnées
+
+    const newFiles = selectedFiles.concat(files);
+    setFiles(newFiles);
+
     const imageNames = selectedFiles.map((file) => file.name);
-  
-    // Ajoutez les fichiers et noms au tableau formData.images
+
     setFormData({
       ...formData,
       images: [...formData.images, ...selectedFiles],
-      urlImage: [...formData.urlImage, ...imageNames]
+      urlImage: [...formData.urlImage, ...imageNames],
     });
-  
-    const previews = formData.images.map((file) => URL.createObjectURL(file));
+    const previews = newFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews(previews);
-  
+
+    console.log("mes images : " + previews);
+
     setSelectedImageNames(formData.urlImage);
   }
-  
-  
-  
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Assurez-vous que formData.urlImage est un tableau
-    const urlImage = Array.isArray(formData.urlImage) ? formData.urlImage.join(',') : '';
-    // const urlImage = selectedImageNames.join(',');
-  
-    const dataToSend = {
-      ...formData,
-      urlImage,
-    };
-  
+
     try {
-      const response = await axios.post('http://localhost:5046/api/products', dataToSend);
+      const response = await axios.post("/api/upload", formData);
+
+      console.log("API Response:", response.data);
+
+      setUploadedImages(response.data.images);
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+    try {
+      const response = await axios.post('http://localhost:5046/api/products', formData);
       console.log('Produit ajouté avec succès :', response.data);
     } catch (error) {
       console.error('Erreur lors de l\'ajout du produit :', error);
     }
   };
-  
 
   const [files, setFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
 
-  function handleFileChange(event) {
-    const selectedFiles = Array.from(event.target.files);
-    const newFiles = selectedFiles.concat(files);
-    setFiles(newFiles);
-
-    const previews = newFiles.map((file) => URL.createObjectURL(file));
-    setImagePreviews(previews);
-  }
-
   async function onSubmit(event) {
     event.preventDefault();
 
-    if (files.length === 0) {
-      alert("Veuillez sélectionner des fichiers");
-      return;
-    }
+    handleSubmit(event);
 
     const formData = new FormData();
 
@@ -121,38 +106,37 @@ function ProductForm() {
           Ajouter un nouveau produit
         </h1>
         <div className={styles.form_block}>
-          <form className={styles.form} onSubmit={(e) => { handleSubmit(e); onSubmit(e); }}  encType="multipart/form-data">
+          <form className={styles.form} onSubmit={onSubmit} encType="multipart/form-data">
             <div className={styles.high_main_block}>
               <div className={styles.first_left_block}>
-              <div>
-              <input type="file" multiple onChange={handleFileChange} />
-              {imagePreviews.length > 0 && (
                 <div>
-                  <p>Fichiers sélectionnés :</p>
-                  <ul>
-                    {imagePreviews.map((preview, index) => (
-                      <li key={index}>
-                        <img src={preview} alt={`Preview ${index}`} width="100" />
-                        <p>{formData.urlImage[index]}</p>
-                      </li>
-                    ))}
-                  </ul>
+                  <input type="file" multiple onChange={handleFileChange} />
+                  {imagePreviews.length > 0 && (
+                    <div className={styles.preview}>
+                      <p>Fichiers sélectionnés :</p>
+                      <ul>
+                        {imagePreviews.map((preview, index) => (
+                          <li key={index}>
+                            <img src={preview} alt={`Preview ${index}`} width="100" />
+                            {/* <p>{formData.urlImage[index]}</p> */}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {uploadedImages && uploadedImages.length > 0 && (
+                    <div >
+                      <p>Images téléchargées :</p>
+                      <ul>
+                        {uploadedImages.map((imageUrl, index) => (
+                          <li key={index}>
+                            <button onClick={() => downloadImage(imageUrl)}>Télécharger</button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              )}
-              {uploadedImages && uploadedImages.length > 0 && (
-                <div>
-                  <p>Images téléchargées :</p>
-                  <ul>
-                    {uploadedImages.map((imageUrl, index) => (
-                      <li key={index}>
-                        <button onClick={() => downloadImage(imageUrl)}>Télécharger</button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-            </div>
               </div>
               <div className={styles.first_right_block}>
                 <div className={styles.high_right_block}>
@@ -181,6 +165,18 @@ function ProductForm() {
                     </label>
                   </div>
                 </div>
+                  <div className={styles.quantity_block}>
+                    <label className={styles.label}>
+                      Quantité
+                      <input
+                        className={styles.input_box}
+                        type="text"
+                        name="quantity"
+                        value={formData.quantity}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
                 <div>
                   <label className={styles.label}>
                     Description
@@ -214,7 +210,6 @@ function ProductForm() {
               <div className={styles.second_low_block}>
                 <label className={styles.label}>
                   URL Stripe
-
                   <textarea
                     className={styles.input_box}
                     name="urlProduct"
@@ -225,11 +220,11 @@ function ProductForm() {
               </div>
             </div>
             <div className={styles.add_product}>
-                <button className={styles.add_button} type="submit">Ajouter</button>
-              </div>
+              <button className={styles.add_button} type="submit">Ajouter</button>
+            </div>
           </form>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

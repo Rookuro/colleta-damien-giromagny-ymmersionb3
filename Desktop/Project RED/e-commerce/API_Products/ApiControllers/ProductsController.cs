@@ -8,6 +8,7 @@ public enum tag {
     processor,
     motherboard,
 }
+
 public class Product
 {
     public int Id { get; set; }
@@ -19,6 +20,7 @@ public class Product
     public List<string> UrlImage { get; set; }
     public string UrlProduct { get; set; }
     public tag TagProduct { get; set; }
+    public int Quantity { get; set; }
 }
 
 
@@ -72,6 +74,7 @@ public class ProductsController : ControllerBase
         existingProduct.UrlImage = updatedProduct.UrlImage;
         existingProduct.UrlProduct = updatedProduct.UrlProduct;
         existingProduct.TagProduct = updatedProduct.TagProduct;
+        existingProduct.Quantity = updatedProduct.Quantity;
 
         SaveProductsToJson();
         return NoContent();

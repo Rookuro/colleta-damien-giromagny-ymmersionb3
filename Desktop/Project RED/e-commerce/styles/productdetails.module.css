@@ -9,7 +9,31 @@
     display: flex;
     justify-content: center;
 }
-
+.subPhotos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.subPhotos img{
+    margin-right: 2rem;
+    cursor: pointer;
+    width: 5rem;
+    height: 5rem;
+}
+.colorselected{
+    z-index: 2;
+    width: 5rem;
+    margin-right: 2rem;
+    height: 5rem;
+    -webkit-box-shadow: 0px 0px 17px 0px #FFA800;
+    -moz-box-shadow: 0px 0px 17px 0px #FFA800;
+    box-shadow: 0px 0px 17px 0px #FFA800;
+}
+.Photos img{
+    width: 18rem;
+    height: 18rem;
+}
 .productdetail_block 
 {
     padding: 15px 15px 15px 15px;
