@@ -4,12 +4,14 @@ import axios from 'axios';
 import styles from '../styles/productdetails.module.css';
 import Image from 'next/image';
 import Star from '../public/star.png';
+import Validity from './/../public/validity.png';
 
 const ProductDetail = () => {
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
+  const [productAdded, setProductAdded] = useState(false);
 
   useEffect(() => {
 
@@ -18,7 +20,6 @@ const ProductDetail = () => {
 
   }, [id]);
   const addToCart = (item) => {
-    // Copiez l'état actuel du panier
     const updatedCart = [...cart];
     const existingItem = updatedCart.find((cartItem) => cartItem.id === item.id);
 
@@ -31,12 +32,13 @@ const ProductDetail = () => {
       updatedCart.push({ ...item, quantity: 1 });
       console.log("on ajoute au panier");
     }
-
-    // Mise à jour de l'état du panier
     setCart(updatedCart);
+    setProductAdded(true);
 
-    // Mise à jour du panier dans le localStorage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    if(item.quantity >0 ){
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+    
   };
   
   useEffect(() => {
@@ -54,6 +56,16 @@ const ProductDetail = () => {
     }
   }, [id]);
 
+  useEffect(()=>{
+    if (productAdded) {
+      const timeoutId = setTimeout(() => {
+        setProductAdded(false);
+      }, 5000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [productAdded]);
+
   const [selected, setSelected] = useState(0);
 
   function switchItem(index) {
@@ -65,6 +77,14 @@ const ProductDetail = () => {
       <div className={styles.productdetail_block}>
         {product ? (
           <>
+            <div className={styles.addproduct}>
+              {productAdded && 
+                <>
+                  <Image src={Validity} width={40} height={40} />
+                  <p>Le produit a été ajouté au panier</p>
+                </>
+              }
+            </div>
             <div className={styles.productdetail_block1}>
               <h2>{product.name}</h2>
               <p>{product.descriptionV2}</p>

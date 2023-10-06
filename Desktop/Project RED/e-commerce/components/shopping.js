@@ -6,7 +6,7 @@ class Shopping extends Component{
     render(){
         return(
             <>
-                <div>
+                {/* <div>
                     <ul>
                         <li>image</li>
                         <li>Article</li>
@@ -14,7 +14,7 @@ class Shopping extends Component{
                         <li>Prix</li>
                         <li></li>
                     </ul>
-                </div>
+                </div> */}
             </>
         )
     }

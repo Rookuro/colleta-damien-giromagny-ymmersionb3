@@ -5,28 +5,27 @@ import Logo from './/../public/logo-computer.png';
 import Cart from './/../public/chariot.png';
 import Search from './/../public/loupe.png';
 import Login from './login';
+import Welcome from './/../public/accueil.png'
 
 const Navbar = () => {
     const [cart, setCart] = useState([]);
+    const [totalItems, setItems] = useState();
   
     useEffect(() => {
-      // Récupérez le panier depuis le localStorage lors de l'initialisation du composant
       const cartData = JSON.parse(localStorage.getItem("cart"));
       if (cartData) {
         setCart(cartData);
       }
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      console.log("mon cart : " + cart);
+      if(cart != null){
+        const item = cart.reduce((total, item) => total + item.quantity, 0);
+        setItems(item);
+      }
+
+  
+
     }, []);
-    
-    function getTotalItemsInCart() {
-        if (typeof window !== 'undefined') {
-            const cart = JSON.parse(localStorage.getItem("cart"));
-            if (!cart) return 0;
-    
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            return totalItems;
-        }
-        return 0; // Retourne 0 côté serveur
-    }
     
 
     return (
@@ -49,19 +48,24 @@ const Navbar = () => {
                 <a href="/Cart" className={styles.cart_button}>
                     <Image src={Cart} alt="Cart" />
                 </a>
-                <p>{getTotalItemsInCart()}</p> {/* Appeler la fonction pour afficher la quantité */}
+                <p className={styles.cart_circle}>{totalItems}</p>
             </div>
 
             <Login />
           </div>
           <div className={styles.block_navbar}>
             <ul className={styles.block_navbar_welcome}>
-              <li><a className={styles.block_navbar_button} href="/">Accueil</a></li>
+              <div className={styles.block_home}>
+                <li><a className={styles.block_navbar_button} href="/">Accueil</a></li>
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill='#FFC632'>
+                  <polygon points="0 0, 100 100, 0 100" color='red'/>
+                </svg>
+             </div>
               <div className={styles.dropdown}>
                 <li className={styles.dropdown_button}><a className={styles.block_navbar_button} href="/Composants">Composants</a></li>
                 <div className={styles.dropdown_content}>
-                  <a href="#">Carte Graphique</a>
-                  <a href="#">SSD</a>
+                  <a href="/Composants/CarteGraphique">Carte Graphique</a>
+                  <a href="/Composants/Processor">Processor</a>
                   <a href="#">RAM</a>
                 </div>
               </div>

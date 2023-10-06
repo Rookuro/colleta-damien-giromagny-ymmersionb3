@@ -203,8 +203,8 @@ function ProductForm() {
               <div className={styles.first_low_block}>
                 <label for="pet-select" className={styles.label}>Ajouter Tag(s)</label>
                 <select className={styles.input_box} id="pet-select" onChange={handleChange}>
-                  <option value={formData.tagProduct = 0} onChange={handleChange}>processor</option>
-                  <option value={formData.tagProduct = 1} onChange={handleChange}>motherboard</option>
+                  <option value={formData.tagProduct = 1} onChange={handleChange}>processor</option>
+                  <option value={formData.tagProduct = 0} onChange={handleChange}>motherboard</option>
                 </select>
               </div>
               <div className={styles.second_low_block}>

@@ -8,6 +8,15 @@
     align-items: center;
     margin-bottom: -35px;
 }
+.cart_circle{
+    background-color: #EAEAEA;
+    border-radius: 5rem;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: -1.5rem;
+    right: -1.3rem;
+}
 
 .logo_block img 
 {
@@ -26,6 +35,8 @@
 
 .cart_block img 
 {
+    position: relative;
+    top: 1rem;
     width: 40px;
 }
 
@@ -90,7 +101,8 @@
 
 .block_navbar a
 {
-    margin-top: px;
+    width: 14.4rem;
+    margin-top: 2px;
     background-color: white;
     padding: 5px 70px 5px 70px;
     box-shadow: 0.5px 1px 3px black;
@@ -105,11 +117,21 @@
 
 /* Dropdown navbar*/
 
+.dropdown {
+    margin-bottom: 3rem;
+}
+
 .dropdown_content {
-    display: flex;
     flex-direction: column;
-    margin-top: 5px;
+    margin-top: 0.4rem;
+    padding: auto auto;
     display: none;
+    z-index: 1;
+    position: absolute;
+}
+
+.dropdown_content a:hover{
+    background-color: #FFC632;
 }
 
 .dropdown_content a {
@@ -128,4 +150,13 @@
     width: 1.5rem;
     position: absolute;
     top: 3rem;
+}
+.block_home a{
+    background-color: #FFC632 !important;
+    
+}
+.block_home{
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }

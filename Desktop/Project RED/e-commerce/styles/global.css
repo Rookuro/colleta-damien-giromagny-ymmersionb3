@@ -21,7 +21,13 @@ body {
     Helvetica Neue,
     sans-serif;
 }
-
+svg{
+  width: 1.95rem;
+  position: absolute;
+  top: -0.31rem;
+  left: 12rem;
+  /* color: red; */
+}
 header{
   background-color: #FFA800;
 }
@@ -43,4 +49,14 @@ footer{
   bottom: 0;
   position: absolute;
   width: 100%;
+}
+
+input[type='button']{
+  cursor: pointer;
+}
+button[type='button']{
+  cursor: pointer;
+}
+button[type='button']:hover{
+  background-color: white;
 }

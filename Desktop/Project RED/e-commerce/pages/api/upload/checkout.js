@@ -1,4 +1,4 @@
-const stripeAPI = require('stripe')(process.env.STRIPE_SK);
+const stripeAPI = require('stripe')("sk_test_51LQ9KCJw7SyqSl04K6zp80bF4y4ruV2uqGr0UPzZy6R4L5kEz4SY2FpKcrnAJBEr0IaKhqbqR9UVbxJDDNp5hQbR00DWs4jR3W");
 
 export default async function handler(req, res) {
   if (req.method !== 'POST')
@@ -16,8 +16,8 @@ export default async function handler(req, res) {
       mode: 'payment',
       line_items,
       customer_email,
-      success_url: `${process.env.NEXT_APP_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_APP_URL}/checkout/canceled`,
+      success_url: `http://localhost:3000/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `http://localhost:3000/checkout/canceled`,
       shipping_address_collection: { allowed_countries: ['MY', 'SG'] },
     });
     res.status(200).json({ sessionId: session.id });

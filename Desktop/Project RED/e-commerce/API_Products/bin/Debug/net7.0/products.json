@@ -32,5 +32,22 @@
     "UrlProduct": "",
     "TagProduct": 1,
     "Quantity": 55
+  },
+  {
+    "Id": 36,
+    "Name": "dofus",
+    "Price": 15.0,
+    "Description": "jeu dofus",
+    "DescriptionV2": "Dofus 2",
+    "IsPromotion": false,
+    "UrlImage": [
+      "dofus-2023-03-10_20-42-03-Crakin.png",
+      "dofus-2023-04-27_23-14-09-Crakin.png",
+      "dofus-2023-04-20_09-24-48-Feurkin.png",
+      "dofus-2023-02-17_15-22-40-Kenetqui.png"
+    ],
+    "UrlProduct": "",
+    "TagProduct": 1,
+    "Quantity": 2
   }
 ]

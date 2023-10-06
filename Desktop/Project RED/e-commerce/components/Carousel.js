@@ -15,29 +15,19 @@ export default class NextJsCarousel extends Component {
 			<div className={styles.carousel}> 
 			<Carousel className={styles.text}> 
 				<div> 
-					<Image src={Carousel_img_1} alt="image1" width={1496} height={350}/> 
-					{/* <p className="legend">Promotion</p>  */}
-
+					<Image src={Carousel_img_1} alt="image1" width={1496} height={350}/>
 				</div> 
 				<div> 
-					<Image src={Carousel_img_2} alt="image2" width={1496} height={350}/> 
-					{/* <p className="legend">Promotion</p>  */}
-
+					<Image src={Carousel_img_2} alt="image2" width={1496} height={350}/>
 				</div> 
 				<div> 
-					<Image src={Carousel_img_3} alt="image3" width={1496} height={350}/> 
-					{/* <p className="legend">Promotion</p>  */}
-
+					<Image src={Carousel_img_3} alt="image3" width={1496} height={350}/>
 				</div> 
 				<div> 
-					<Image src={Carousel_img_4} alt="image4" width={1496} height={350}/> 
-					{/* <p className="legend">Promotion</p>  */}
-
+					<Image src={Carousel_img_4} alt="image4" width={1496} height={350}/>
 				</div> 
 				<div> 
-					<Image src={Carousel_img_5} alt="image5" width={1496} height={350}/> 
-					{/* <p className="legend">Promotion</p>  */}
-
+					<Image src={Carousel_img_5} alt="image5" width={1496} height={350}/>
 				</div>
 			</Carousel> 
 			</div> 
