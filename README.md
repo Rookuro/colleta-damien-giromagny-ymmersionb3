@@ -16,10 +16,9 @@ Suivi des Commandes : Les utilisateurs peuvent suivre l'état de leurs commandes
 Technologies Utilisées
 
     Frontend : HTML, CSS, JavaScript, React.js
-    Backend : Next.js
-    Base de Données : MongoDB
-    Authentification : JSON Web Tokens (JWT)
-    Panier : Stripe API
+    Backend : Next.js, TypeScript, C#
+    Framezork : Flask
+    Panier : Stripe 
 
 Installation
 
