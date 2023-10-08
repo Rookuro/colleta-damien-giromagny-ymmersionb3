@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductApiGet from '../../components/Api/ProductApiGet';
 import styles from '../../styles/Product.module.css';
 import Image from 'next/image';
@@ -9,22 +9,42 @@ import Alimentation from './/../../public/alim.webp';
 import Ssd from './/../../public/ssd.webp';
 
 
+
 const Component = () => {
     const products = ProductApiGet();
 
     const [inStockFilter, setInStockFilter] = useState(false);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(2500);
+    const [sortingOrder, setSortingOrder] = useState(null);
 
     const filteredProducts = products ? (inStockFilter
         ? products.filter(product => product.quantity > 0 && product.price >= minPrice && product.price <= maxPrice)
-        : products.filter(product =>  product.price >= minPrice && product.price <= maxPrice))
+        : products.filter(product => product.price >= minPrice && product.price <= maxPrice))
         : [];
 
     function InStock() {
         setInStockFilter(!inStockFilter);
     }
+
+    const sortProducts = (order) => {
+        const sortedProducts = [...filteredProducts];
+        if (order === 'croissant') {
+            sortedProducts.sort((a, b) => a.price - b.price);
+        } else if (order === 'decroissant') {
+            sortedProducts.sort((a, b) => b.price - a.price);
+        }
+        return sortedProducts;
+    };
+
+    const sortedProducts = sortingOrder ? sortProducts(sortingOrder) : filteredProducts;
+
     
+        useEffect(() => {
+            if (sortingOrder) {
+                sortProducts(sortingOrder);
+            }
+        }, [sortingOrder, filteredProducts]);
     return (
         <>
         <div className={styles.component_page_main}>
@@ -38,12 +58,20 @@ const Component = () => {
                                 <label>En stock</label> 
                             </div>
                             <div className={styles.component_page_block_filter_checkbox_2}>
-                                <input type='checkbox'/>
-                                <label>Croissant - Décroissant</label>
+                                <input
+                                    type='checkbox'
+                                    onChange={() => setSortingOrder('croissant')}
+                                    checked={sortingOrder === 'croissant'}
+                                />
+                                <label>Croissant</label>
                             </div>
                             <div className={styles.component_page_block_filter_checkbox_3}>
-                                <input type='checkbox'/>
-                                <label>Décroissant - Croissant</label>
+                                <input
+                                    type='checkbox'
+                                    onChange={() => setSortingOrder('decroissant')}
+                                    checked={sortingOrder === 'decroissant'}
+                                />
+                                <label>Décroissant</label>
                             </div>
                         </div>
                         <div className={styles.component_block_filter}>
@@ -87,51 +115,53 @@ const Component = () => {
                 </div> 
             </div> 
             <div className={styles.component_page_block3}>
-            <div className={styles.component_block_product_rod}></div>
-                <div className={styles.component_display_product}>
-                    {filteredProducts.length > 0 ? (
-                        <div className={styles.product}>
-                            {filteredProducts.map(product => (
-                                <div className={styles.products}>
-                                <div key={product.id} className={styles.component_display_product_number}>
-                                    <div className={styles.component_border_right}>
-                                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill='#FFA800'>
-                                            <polygon points="0 0, 100 100, 0 100" />
-                                        </svg>
+                    <div className={styles.component_block_product_rod}></div>
+                    <div className={styles.component_display_product}>
+                        {sortedProducts.length > 0 ? (
+                            <div className={styles.product}>
+                                {sortedProducts.map(product => (
+                                    <div className={styles.products} key={product.id}>
+                                        <div className={styles.component_display_product_number}>
+                                            <div className={styles.component_border_right}>
+                                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill='#FFA800'>
+                                                    <polygon points="0 0, 100 100, 0 100" />
+                                                </svg>
+                                            </div>
+                                            <Image
+                                                src={product.urlImage && product.urlImage.length > 0 ? `/uploads/${product.urlImage[0]}` : '/path/par/default.jpg'}
+                                                alt="sample image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                            <div className={styles.component_block_information}>
+                                                <h3>
+                                                    <Link href={`/ProductDetail?id=${product.id}`}>
+                                                        {product.name}
+                                                    </Link>
+                                                </h3>
+                                                <h4>
+                                                    <Link href={`/ProductDetail?id=${product.id}`}>
+                                                        {product.descriptionV2}
+                                                    </Link>
+                                                </h4>
+                                            </div>
+                                            <div className={styles.component_product_price}>
+                                                <Link href={`/ProductDetail?id=${product.id}`}>
+                                                    {product.price}
+                                                </Link>
+                                            </div>
+                                            <div className={styles.component_border_left}>
+                                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill={product.quantity === 0 ? '#FF0000' : "#00CD21"}>
+                                                    <polygon points="0 0, 100 100, 0 100" color='red'/>
+                                                </svg>
+                                                <p className={product.quantity === 0 ? styles.red : styles.green}>
+                                                    {product.quantity === 0 ? "Rupture" : "En Stock"}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <Image
-                                        src={product.urlImage && product.urlImage.length > 0 ? `/uploads/${product.urlImage[0]}` : '/path/par/default.jpg'}
-                                        alt="sample image"
-                                        width={200}
-                                        height={200}
-                                    />
-                                    <div key={product.id} className={styles.component_block_information}>
-                                        <h3>
-                                            <Link href={`/ProductDetail?id=${product.id}`}>
-                                                {product.name}
-                                            </Link>
-                                        </h3>
-                                        <h4>
-                                            <Link href={`/ProductDetail?id=${product.id}`}>
-                                                {product.descriptionV2}
-                                            </Link>
-                                        </h4>
-                                    </div>
-                                    <div key={product.id} className={styles.component_product_price}>
-                                        <Link href={`/ProductDetail?id=${product.id}`}>
-                                                {product.price}€
-                                        </Link>
-                                    </div>
-                                    <div className={styles.component_border_left}>
-                                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill={product.quantity == 0 ? '#FF0000' : "#00CD21"}>
-                                            <polygon points="0 0, 100 100, 0 100" color='red'/>
-                                        </svg>
-                                        <p className={product.quantity == 0 ? styles.red : styles.green}>{product.quantity == 0 ? "Rupture" : "En Stock"}</p>
-                                    </div>
-                                </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
                     ) : (
                         <div>No products with tag 1 found.</div>
                     )}
