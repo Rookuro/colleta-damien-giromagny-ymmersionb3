@@ -19,8 +19,8 @@ const Component = () => {
     const [sortingOrder, setSortingOrder] = useState(null);
 
     const filteredProducts = products ? (inStockFilter
-        ? products.filter(product => product.quantity > 0 && product.price >= minPrice && product.price <= maxPrice)
-        : products.filter(product => product.price >= minPrice && product.price <= maxPrice))
+        ? products.filter(product => product.tagProduct === 1 && product.quantity > 0 && product.price >= minPrice && product.price <= maxPrice)
+        : products.filter(product => product.tagProduct === 1 && product.price >= minPrice && product.price <= maxPrice))
         : [];
 
     function InStock() {
