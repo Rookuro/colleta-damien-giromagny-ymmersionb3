@@ -31,7 +31,6 @@ export default function StripeCheckout() {
     });
   }
   const redirectToCheckout = async () => {
-    // Récupérez le panier depuis le localStorage
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
     const {

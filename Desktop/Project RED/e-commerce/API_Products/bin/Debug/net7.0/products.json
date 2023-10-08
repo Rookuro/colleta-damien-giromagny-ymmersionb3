@@ -1,5 +1,39 @@
 [
   {
+    "Id": 31,
+    "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G moment",
+    "Price": 1099.99,
+    "Description": "Basée sur l'architecture NVIDIA Ada Lovelace, la \ncarte graphique Gigabyte AORUS GeForce RTX \n4060 ELITE 8G s'appuie sur la technologie DLSS 3 \net le ray tracing matériel pour sublimer les jeux les \nplus récents et vous permettre de vivre une expérience \nvidéoludique immersive et réaliste.",
+    "DescriptionV2": "8 Go GDDR6 - Dual HDMI/Dual DisplayPort - DLSS 3 - PCI Express (NVIDIA GeForce RTX 4060)",
+    "IsPromotion": false,
+    "UrlImage": [
+      "gpu_1.jpg",
+      "gpu_2.jpg",
+      "gpu_3.jpg",
+      "gpu_4.jpg"
+    ],
+    "UrlProduct": "https://buy.stripe.com/test_fZe2aw4Pd7BF9iM000",
+    "TagProduct": 0,
+    "Quantity": 0
+  },
+  {
+    "Id": 32,
+    "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G test",
+    "Price": 1099.99,
+    "Description": "Basée sur l'architecture NVIDIA Ada Lovelace, la \ncarte graphique Gigabyte AORUS GeForce RTX \n4060 ELITE 8G s'appuie sur la technologie DLSS 3 \net le ray tracing matériel pour sublimer les jeux les \nplus récents et vous permettre de vivre une expérience \nvidéoludique immersive et réaliste.",
+    "DescriptionV2": "8 Go GDDR6 - Dual HDMI/Dual DisplayPort - DLSS 3 - PCI Express (NVIDIA GeForce RTX 4060)",
+    "IsPromotion": false,
+    "UrlImage": [
+      "gpu_1.jpg",
+      "gpu_2.jpg",
+      "gpu_3.jpg",
+      "gpu_4.jpg"
+    ],
+    "UrlProduct": "https://buy.stripe.com/test_fZe2aw4Pd7BF9iM000",
+    "TagProduct": 0,
+    "Quantity": 0
+  },
+  {
     "Id": 34,
     "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G",
     "Price": 1099.99,
@@ -13,8 +47,42 @@
       "gpu_4.jpg"
     ],
     "UrlProduct": "https://buy.stripe.com/test_fZe2aw4Pd7BF9iM000",
-    "TagProduct": 1,
+    "TagProduct": 0,
     "Quantity": 0
+  },
+  {
+    "Id": 36,
+    "Name": "ASRock Radeon RX 7900 XTX Phantom Gaming",
+    "Price": 999.0,
+    "Description": "La carte graphique Radeon RX 7900 XTX est une carte graphique conçue pour les passionnés, à la recherche de la meilleure expérience de jeu possible. Porte-étendard de la nouvelle architecture RDNA3, elle apporte un gain de performance considérable par rapport à la génération précédente et propose le support natif du raytracing.",
+    "DescriptionV2": "Carte graphique overclockée - Refroidissement semi-passif (mode 0 dB) - Avec backplate - Compatible VR",
+    "IsPromotion": false,
+    "UrlImage": [
+      "cg4.webp",
+      "cg3.webp",
+      "cg2.webp",
+      "cg1.webp"
+    ],
+    "UrlProduct": "",
+    "TagProduct": 0,
+    "Quantity": 50
+  },
+  {
+    "Id": 37,
+    "Name": "Asus Radeon RX 6750 XT DUAL O12G",
+    "Price": 799.0,
+    "Description": "Carte graphique - Avec backplate - Compatible VR",
+    "DescriptionV2": "La carte graphique Radeon RX 6750 XT est une carte graphique conçue pour les passionnés, à la recherche de la meilleure expérience de jeu possible. Porte-étendard de la nouvelle architecture RDNA2, elle apporte un gain de performance considérable par rapport à la génération précédente et propose le support natif du raytracing, une première pour les cartes graphiques AMD.",
+    "IsPromotion": false,
+    "UrlImage": [
+      "cg4.webp",
+      "cg3.webp",
+      "cg2.webp",
+      "cg1.webp"
+    ],
+    "UrlProduct": "",
+    "TagProduct": 0,
+    "Quantity": 44
   },
   {
     "Id": 35,
@@ -34,20 +102,37 @@
     "Quantity": 55
   },
   {
-    "Id": 36,
-    "Name": "dofus",
-    "Price": 15.0,
-    "Description": "jeu dofus",
-    "DescriptionV2": "Dofus 2",
+    "Id": 38,
+    "Name": "NZXT Kraken 240 RGB Noir - 240 mm",
+    "Price": 109.0,
+    "Description": "Le Kraken offre des performances rafraîchissantes, une installation facile et un écran pour afficher les caractéristiques du système ou des images personnalisées. ",
+    "DescriptionV2": "Watercooling autonome - PWM - Socket AMD AM4 / AM5 et Intel 1700 / 1200 / 115x",
     "IsPromotion": false,
     "UrlImage": [
-      "dofus-2023-03-10_20-42-03-Crakin.png",
-      "dofus-2023-04-27_23-14-09-Crakin.png",
-      "dofus-2023-04-20_09-24-48-Feurkin.png",
-      "dofus-2023-02-17_15-22-40-Kenetqui.png"
+      "wc33.webp",
+      "wc22.webp",
+      "wc11.webp"
     ],
     "UrlProduct": "",
     "TagProduct": 1,
-    "Quantity": 2
+    "Quantity": 8
+  },
+  {
+    "Id": 39,
+    "Name": "dofus",
+    "Price": 10.0,
+    "Description": "test",
+    "DescriptionV2": "test",
+    "IsPromotion": false,
+    "UrlImage": [
+      "dofus-2023-02-22_08-36-20-Sacrikin.png",
+      "dofus-2023-03-10_20-42-03-Crakin.png",
+      "dofus-2023-04-23_15-12-48-Crakin.png",
+      "dofus-2023-04-23_15-55-18-Crakin.png",
+      "dofus-2023-04-23_16-37-58-Crakin.png"
+    ],
+    "UrlProduct": "",
+    "TagProduct": 0,
+    "Quantity": 1
   }
 ]

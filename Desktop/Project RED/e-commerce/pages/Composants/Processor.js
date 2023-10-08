@@ -8,8 +8,6 @@ import Watercooling from './/../../public/watercooling.webp';
 import Alimentation from './/../../public/alim.webp';
 import Ssd from './/../../public/ssd.webp';
 
-
-
 const Component = () => {
     const products = ProductApiGet();
 

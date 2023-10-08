@@ -9,6 +9,13 @@ public enum tag {
     motherboard,
 }
 
+public enum InteractionType
+{
+    Viewed,
+    AddedToCart,
+    Purchased
+}
+
 public class Product
 {
     public int Id { get; set; }
@@ -22,6 +29,14 @@ public class Product
     public tag TagProduct { get; set; }
     public int Quantity { get; set; }
 }
+public class UserProductInteraction
+{
+    public string UserId { get; set; }
+    public int ProductId { get; set; }
+    public InteractionType InteractionType { get; set; }
+    public DateTime InteractionTime { get; set; }
+}
+
 
 
 [Route("api/products")]
@@ -29,6 +44,7 @@ public class Product
 public class ProductsController : ControllerBase
 {
     private static List<Product> _products;
+    private static List<UserProductInteraction> interactions = new List<UserProductInteraction>();
 
     public ProductsController(){
         string json = System.IO.File.ReadAllText("products.json");
@@ -40,8 +56,10 @@ public class ProductsController : ControllerBase
         return Ok(_products);
     }
 
+
     [HttpGet("{id}")]
-    public ActionResult<Product> Get(int id) {
+    public ActionResult<Product> Get(int id)
+    {
         var product = _products.Find(p => p.Id == id);
         if (product == null)
         {
@@ -49,6 +67,7 @@ public class ProductsController : ControllerBase
         }
         return Ok(product);
     }
+
     [HttpPost]
     public ActionResult<Product> Post([FromBody] Product product)
     {
@@ -79,6 +98,13 @@ public class ProductsController : ControllerBase
         SaveProductsToJson();
         return NoContent();
     }
+
+    [HttpPost("interactions")]
+    public ActionResult RecordInteraction([FromBody] UserProductInteraction interaction){
+        interactions.Add(interaction);
+        return Ok();
+    }
+
 
     [HttpDelete("{id}")]
     public ActionResult Delete(int id){

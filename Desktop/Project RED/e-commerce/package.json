@@ -1,14 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.3.1",
     "axios": "^1.5.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "firebase": "^10.4.0",
+    "firebase-admin": "^11.11.0",
     "firebaseui": "^6.1.0",
     "formidable": "^3.5.1",
     "formidable-serverless": "^1.1.1",
@@ -22,6 +25,7 @@
     "react-firebaseui": "^6.0.0",
     "react-icons": "^4.11.0",
     "react-responsive-carousel": "^3.2.23",
+    "reactfire": "^4.2.3",
     "stripe": "^13.9.0"
   },
   "engines": {

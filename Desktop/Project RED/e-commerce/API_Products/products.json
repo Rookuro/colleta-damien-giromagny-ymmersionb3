@@ -1,5 +1,39 @@
 [
   {
+    "Id": 31,
+    "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G moment",
+    "Price": 1099.99,
+    "Description": "Basée sur l'architecture NVIDIA Ada Lovelace, la \ncarte graphique Gigabyte AORUS GeForce RTX \n4060 ELITE 8G s'appuie sur la technologie DLSS 3 \net le ray tracing matériel pour sublimer les jeux les \nplus récents et vous permettre de vivre une expérience \nvidéoludique immersive et réaliste.",
+    "DescriptionV2": "8 Go GDDR6 - Dual HDMI/Dual DisplayPort - DLSS 3 - PCI Express (NVIDIA GeForce RTX 4060)",
+    "IsPromotion": false,
+    "UrlImage": [
+      "gpu_1.jpg",
+      "gpu_2.jpg",
+      "gpu_3.jpg",
+      "gpu_4.jpg"
+    ],
+    "UrlProduct": "https://buy.stripe.com/test_fZe2aw4Pd7BF9iM000",
+    "TagProduct": 0,
+    "Quantity": 0
+  },
+  {
+    "Id": 32,
+    "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G test",
+    "Price": 1099.99,
+    "Description": "Basée sur l'architecture NVIDIA Ada Lovelace, la \ncarte graphique Gigabyte AORUS GeForce RTX \n4060 ELITE 8G s'appuie sur la technologie DLSS 3 \net le ray tracing matériel pour sublimer les jeux les \nplus récents et vous permettre de vivre une expérience \nvidéoludique immersive et réaliste.",
+    "DescriptionV2": "8 Go GDDR6 - Dual HDMI/Dual DisplayPort - DLSS 3 - PCI Express (NVIDIA GeForce RTX 4060)",
+    "IsPromotion": false,
+    "UrlImage": [
+      "gpu_1.jpg",
+      "gpu_2.jpg",
+      "gpu_3.jpg",
+      "gpu_4.jpg"
+    ],
+    "UrlProduct": "https://buy.stripe.com/test_fZe2aw4Pd7BF9iM000",
+    "TagProduct": 0,
+    "Quantity": 0
+  },
+  {
     "Id": 34,
     "Name": "Gigabyte AORUS GeForce RTX 4060 ELITE 8G",
     "Price": 1099.99,

@@ -1,22 +1,26 @@
-import React from "react";
-import { app } from "../firebase-config";
-import { useRouter } from "next/router";
-import styles from '../styles/Login.module.css';
-import Connexion from '../public/connexion.png';
-import Image from 'next/image';
-import { userAccessToken, fetchUser } from '../utils/fetchUserDetails';
-import { useEffect, useState, useRef } from 'react';
-import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
-import { auth } from '../firebase-config';
+import React, { useEffect, useState } from 'react';
+import { auth, googleProvider, signInWithPopup, signOut, onAuthStateChanged } from '../firebase-config';
+import axios from 'axios';
 
-export default function AuthComponent() {
+const AuthComponent = () => {
   const [user, setUser] = useState(null);
 
+
   const signIn = async () => {
-    const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      const result = await signInWithPopup(auth, googleProvider);
+      const idToken = await result.user.getIdToken();
+      console.log("connecté : " + idToken);
+      
+      console.log("ID de l'utilisateur : " + result.user.uid);
+  
+      axios.post('http://localhost:5000/api/user-id', { idToken: idToken })
+        .then(response => {
+          console.log("Réponse du serveur : ", response.data);
+        })
+        .catch(error => {
+          console.error('Erreur lors de la requête POST :', error);
+        });
     } catch (error) {
       console.error('Erreur de connexion :', error);
     }
@@ -33,7 +37,7 @@ export default function AuthComponent() {
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
@@ -45,23 +49,20 @@ export default function AuthComponent() {
   }, []);
 
   return (
-    <>
+    <div>
       {user ? (
-        <div className={styles.connected}>
-          <picture>
-            <source srcSet={user.photoURL} type="image/webp" />
-            <img src={user.photoURL} alt="" className="rounded-md shadow-md absolute top-0 right-17 cursor-pointer taille" layout="fill" />
-          </picture>
+        <div>
+          <img src={user.photoURL} alt={user.displayName} />
+          <p>Connecté en tant que {user.displayName}</p>
           <button onClick={signOutUser}>Se déconnecter</button>
         </div>
       ) : (
-        <div className={styles.button} onClick={signIn}>
-          <Image src={Connexion}/>
-          <div className={styles.text} onClick={signIn}>
-            <p className="">Se connecter</p>
-          </div>
+        <div>
+          <button onClick={signIn}>Se connecter avec Google</button>
         </div>
       )}
-    </>
+    </div>
   );
-}
+};
+
+export default AuthComponent;

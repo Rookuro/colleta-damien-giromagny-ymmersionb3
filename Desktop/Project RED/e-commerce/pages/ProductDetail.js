@@ -12,6 +12,23 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [cart, setCart] = useState([]);
   const [productAdded, setProductAdded] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/user-id');
+        const userId = response.data.userId;
+        console.log("user-id : " + userId);
+        setUserId(userId);
+      } catch (error) {
+        console.error('Erreur lors de la récupération de l\'ID de l\'utilisateur :', error);
+        setUserId(null);
+      }
+    };
+
+    fetchUserId();
+  }, []);
 
   useEffect(() => {
 
@@ -19,9 +36,41 @@ const ProductDetail = () => {
     setCart(storedCart);
 
   }, [id]);
+  
   const addToCart = (item) => {
     const updatedCart = [...cart];
     const existingItem = updatedCart.find((cartItem) => cartItem.id === item.id);
+    // const userId = auth.currentUser ? auth.currentUser.uid : null;
+
+    if (userId) {
+      const interactionData = {
+          userId: userId,
+          productId: item.id,
+          tag: item.tagProduct,
+          interactionType: 'add_to_cart',
+      };
+  
+      fetch('/api/interactions', {
+        method: 'POST',
+        body: JSON.stringify(interactionData),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((response) => {
+        if (response.status === 200) {
+            setProductAdded(true);
+            // alert('Le produit a été ajouté au panier.');
+        } else {
+            alert("Une erreur s'est produite lors de l'ajout au panier. Veuillez réessayer.");
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+    
+  }
+  
 
     if (existingItem) {
       if (existingItem.quantity < item.quantity) {

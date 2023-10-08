@@ -24,17 +24,7 @@ import Tv from './/../public/TV.jpg';
 import Son from './/../public/casque.jpg';
 import Tablette from './/../public/tablette.jpg';
 import Component from './/../public/composants.jpg';
-
-
-// const FileUploadNoSSR = dynamic(() => import('./FileUploader'), {
-//   ssr: false,
-// });
-
-//Suite a l'immersion de cette semaine il nous a été demander de réaliser un site e-commerce, en ce sens nous avions pour objectif de structurer et développer en groupe,
-//un site, pour notre part nous avons décider de partir sur un sujet qui nous correpondaient tous les trois entre autre cette dernière est sur la thématique de la vente de composants / périphérique informatique.
-//Bonjour a tous, en 2022 la France a enregistrer une demande croissante de 90% sur les composants d'ordinateur et sur les périphériques, c'est pour cela que aujourd'hui nous
-//vous présentons le site PC Components 
-
+import RecommendedProducts from '../components/RecommendedProducts';
 
 
 export default function Home() {
@@ -114,6 +104,7 @@ export default function Home() {
               </div>
           </div>
         </div>
+        <RecommendedProducts />
       </div>
       {/* <ProductApiGet /> */}
       {/* <h1>Téléchargement de photo</h1> */}
